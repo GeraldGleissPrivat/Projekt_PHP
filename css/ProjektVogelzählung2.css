@@ -1,0 +1,632 @@
+		.gelasio-400 {
+			font-family: "Gelasio", serif;
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		.gelasio-700 {
+			font-family: "Gelasio", serif;
+			font-weight: 700;
+			font-style: normal;
+		}
+
+		.sunflower-light {
+			font-family: "Sunflower", serif;
+			font-weight: 300;
+			font-style: normal;
+		}
+
+		body {
+			background: hsl(57, 95%, 82%);
+			position: relative;
+			counter-reset: picture_counter;
+			font-family: "Gelasio", serif;
+			color: hsl(0, 0%, 20%)
+		}
+
+		details,
+		.Bilder,
+		.Textbeschreibung {
+			font-family: "Sunflower, serif";
+		}
+
+		nav {
+			position: sticky;
+			top: 0;
+			height: 2.6rem;
+			background-color: hsl(327, 95%, 80%);
+			z-index: 30;
+		}
+
+		.navcontainer,
+		.navcontainer>li {
+			display: flex;
+			flex-direction: row;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: hsl(327, 95%, 80%);
+
+		}
+
+		.navcontainer li {
+			display: flex;
+			height: 100%;
+			width: 100%;
+			border-right: 2px solid hsl(147, 95%, 80%);
+			align-content: center;
+			align-items: center;
+			justify-content: center;
+
+		}
+
+		.navcontainer>*:last-of-type {
+			border-right: none;
+		}
+
+		.navcontainer>li:hover {
+			box-sizing: border-box;
+			background-color: hsl(147, 95%, 80%);
+			cursor: pointer;
+			text-decoration: underline;
+			color: blue;
+			font-size: 1.5em;
+		}
+
+		header {
+			display: flex;
+			height: 5rem;
+			background-color: hsl(220.48, 34.73%, 53.14%);
+			position: sticky;
+			top: 2.6rem;
+			z-index: 10;
+			font-family: "Gelasio", serif;
+		}
+
+		#logo {
+			height: 75%;
+			width: auto;
+		}
+
+		tr img {
+			height: 4rem;
+			max-width: 4rem;
+			aspect-ratio: 1/1;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 100%;
+		}
+
+		/*weil die Türkentaube nicht in der Mitte des Bildes ist sondern links versetzt ;-) */
+		tr:last-of-type img {
+			object-position: left;
+		}
+
+		table {
+			border: 3px solid black;
+			border-collapse: collapse;
+			padding: 1rem;
+			overflow: hidden;
+		}
+
+		caption {
+			caption-side: bottom;
+			padding-top: 1em;
+			;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 1rem 1rem;
+			text-align: center;
+		}
+
+		td:nth-of-type(3){
+			text-align: left;
+		}
+
+		.th {
+			background-color: hsl(220.48, 34.73%, 75%);
+			border-color: black;
+			z-index: 5;
+		}
+
+		td:nth-of-type(1) {
+			border-right: none;
+		}
+
+		td:nth-of-type(2) {
+			border-left: none;
+		}
+
+		.ausgeblendet {
+			display: none;
+		}
+
+		.eingeblendet {
+			display: flex;
+			justify-content: center;
+			height: 80vh;
+			width: auto;
+			z-index: 5;
+			object-fit: contain;
+			object-position: center;
+		}
+
+		/*Damit sich die Höhe der figure an der Höhe des inneren Bildes orientiert 
+		und nicht an der Höhe des Kurzportraits links davon.
+		Nur so können die 'absolute' positionierten Bildbeschriftungen sicher am Bild ausgerichtet werden*/
+		figure {
+			height: min-content;
+		}
+
+		figcaption {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
+
+		picture {
+			position: static;
+			top: 0;
+			left: 0;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		.captionTop::before {
+			counter-increment: picture_counter;
+			content: "Platz "counter(picture_counter) ": ";
+		}
+
+		figcaption>div {
+			position: absolute;
+			width: 50%;
+			background-color: hsla(0, 0%, 10%, 50%);
+			color: hsl(0, 0%, 90%);
+			z-index: 5;
+			padding: 0.1em 0.2em;
+		}
+
+		.lens,
+		.minuslens {
+			position: absolute;
+			width: 2rem;
+			height: 2rem;
+			background-size: cover;
+			top: 0;
+			right: 0;
+			cursor: pointer;
+			padding: 0;
+		}
+
+		.captionTop {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.captionBottom {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+
+		.lens {
+			background-image: url("../bilder/logo/lens.png");
+		}
+
+		.minuslens {
+			background-image: url("../bilder/logo/minuslens.svg");
+			background-color: aliceblue;
+		}
+
+		thead {
+			position: sticky;
+			top: 7.5rem;
+			z-index: 5;
+			overflow: hidden;
+		}
+
+		.grid {
+			margin-top: 1rem;
+		}
+
+		.Textbeschreibung {
+			overflow-wrap: break-word;
+		}
+
+		.PortraitContainer {
+			height: auto;
+			width: auto;
+			gap: 0;
+			position: relative;
+		}
+
+		.PortraitContainer>h1 {
+			display: block;
+		}
+
+		.Portraitbild {
+			object-fit: cover;
+		}
+
+		.b {
+			position: relative;
+		}
+
+		figcaption .Audio {
+			width: 20rem;
+		}
+
+		audio {
+			width: 100%;
+		}
+
+		.nav_selected {
+			background-color: hsl(327, 95%, 70%);
+			font-size: 1.5em;
+		}
+
+		.logo {
+			display: flex;
+			width: 100vw;
+			align-content: center;
+			align-items: center;
+			justify-content: space-evenly;
+			flex-direction: row;
+			font-size: 2em;
+		}
+
+		h1 {
+			font-weight: 700;
+			font-size: 1.5em;
+			margin-left: 1em;
+		}
+
+		h2, summary{
+			font-size: 1.3em;
+			font-weight: 400;
+			font-weight: bold;
+			margin-left: 1em;
+		}
+
+		p,
+		details {
+			font-size: 1.1em;
+			line-height: 1.3em;
+			margin-left:1em;
+		}
+
+		div.test {
+			position: relative;
+			width: 100%;
+			height: fit-content;
+			top: 0;
+			left: 0;
+			z-index: 3;
+		}
+
+		#btnNav {
+			display: none;
+		}
+
+		#fs {
+			display: grid;
+			grid-template-areas:
+				"lv vorname . ln nachname"
+				"ls strasse . lh hausnummer"
+				"lp postleitzahl . lstadt stadt"
+				". . .lemail emailadresse"
+				". . . . btnsenden";
+			grid-template-columns: 10em 20em 1em 10em 20em;
+			grid-template-rows: 2em 2em 2em 2em 2em;
+			gap: 0.3em;
+
+		}
+		.ls{
+			grid-area: ls;
+		}
+		.lv{
+			grid-area: lv;
+		}
+		.lp{
+			grid-area: lp;
+		}
+		.ln{
+			grid-area: ln;
+		}
+		.lstadt{
+			grid-area: lstadt;
+		}
+		.lemail{
+			grid-area: lemail;
+		}
+		#strasse {
+			grid-area: strasse;
+		}
+		#lemail{
+			grid-area:lemail;
+		}
+
+		#postleitzahl {
+			grid-area: postleitzahl;
+		}
+		#hausnummer{
+			grid-area: hausnummer;
+		}
+		.lh{
+			grid-area: lh;
+		}
+
+		#vorname {
+			grid-area: vorname;
+		}
+
+		#nachname {
+			grid-area: nachname;
+		}
+
+		#strasse {
+			grid-area: strasse;
+		}
+		#emailadresse{
+			grid-area: emailadresse;
+		}
+		#stadt{
+			grid-area: stadt;
+		}
+
+		#login{
+			display: grid;
+			grid-template-areas:
+			"luname Username"
+			"lpasswort Passwort"
+			" . btn";
+			grid-template-columns: 10em 15em;
+			grid-template-rows: 2em 2em 2em;
+			gap: 0.3em;	
+			align-items:center;
+		}
+		#login.Username{
+			grid-area: luname;
+		}
+		#Username{
+			grid-area:Username;
+		}
+		#login.Passwort{
+			grid-area: lpasswort;
+		}
+		#passwort{
+			grid-area: Passwort;
+		}
+		#login .btnlogin{
+			grid-area: btn;
+		}
+		#login.Username{
+			grid-area: luname;
+		}
+		form fieldset{
+			margin-bottom:1em;
+		}
+		form fieldset:nth-of-type(2) legend, form fieldset:nth-of-type(2) button{
+			color:blue;
+		}
+		#registrieren{
+			display: grid;
+			grid-template-areas:
+			". btnregistrieren";
+			grid-template-columns: 10em 15em;
+			grid-template-rows: 2em;
+			gap: 0.5em;	
+			align-items:center;
+		}
+		.btnregistrieren{
+			grid-area: btnregistrieren;
+		}
+		#reg{
+			color:blue;
+			text-decoration: underline;
+		}
+		#reg:visited{
+			color:magenta;
+		}
+		.btnsenden{
+			grid-area: btnsenden;
+			height:auto;
+			background-color: hsl(220.48, 34.73%, 75%);
+			width: 100%;
+			justify-items: flex-end;
+		}
+		.email{
+			grid-area: lemail;
+		}
+		.btnsenden:active{
+			color:grey;
+			background-color: #333;
+		}
+		.linksGrid>ul{
+			display:grid;
+			grid-template-columns: 17em 10em;
+			grid-template-rows: 6em 6em 6em;
+			left:15%;
+			top:10em;
+		}
+		.linksGrid>ul>li{
+			display: grid;
+			grid-template-columns: subgrid;
+			grid-column: span 2;
+			grid-template-rows: subgrid;
+			grid-row: span 1;
+			gap:1em;
+			align-items: center;
+			text-align: left;
+			padding-left: 1em;
+		}
+		.linksGrid>ul>li:nth-of-type(even){
+			backdrop-filter: brightness(0.7);
+		}
+		.linksGrid>ul>li:nth-of-type(odd){
+			backdrop-filter: brightness(0.8);
+		}
+		.linksGrid img{
+			width:6em;
+			height: auto;
+		}
+		@media screen and (max-width:62em) {
+
+			table,
+			tr,
+			td {
+				display: block;
+				border: none;
+				text-align: left;
+			}
+
+			thead {
+				display: none;
+				border: none;
+			}
+
+			table,
+			tr {
+				border-bottom: 5px dotted hsl(220.48, 34.73%, 53.14%);
+				margin-bottom: 0.8em;
+				height:auto;
+			}
+
+			td::before {
+				content: attr(data-label);
+				font-weight: bolder;
+			}
+
+			tr img {
+				width: 7em;
+				height: 7em;
+				max-width: none;
+				object-fit:cover;
+				object-position: center;
+			}
+
+			header {
+				height: 12em;
+			}
+
+			header img {
+				height: 5em;
+				aspect-ratio: 1/1;
+			}
+
+			#fs {
+				display: grid;
+				grid-template-areas:
+					"lv vorname"
+					"ln nachname"
+					"ls strasse"
+					"lh hausnummer"
+					"lp postleitzahl"
+					"lstadt stadt"
+					"lemail emailadresse"
+					". btnsenden";
+				grid-template-columns: 10em 20em;
+				grid-template-rows: repeat(8, 2em);
+				gap: 0.3em;
+				align-items: center;
+			}
+		}
+
+		.btnsenden{
+			height:auto;
+			border-radius: 0.4em;
+			grid-area: btnsenden;
+		}
+		.Kontaktformular{
+			margin:3em;
+		}
+
+		/*Umschalten Navigationsleiste unter 48em auf Burger- Menü*/
+		@media screen and (max-width: 48em) {
+			.Navigation {
+				display: flex;
+				flex-direction: column;
+				height: auto;
+				align-items: center;
+				gap:0.7em;
+			}
+
+			nav.Navigation>#btnNav {
+				position: relative;
+				display: block;
+				background-image: url("../bilder/svg/burger.svg");
+				background-repeat: no-repeat;
+				height: 2.2rem;
+				width: 2.2rem;
+				border: 2px solid grey;
+				border-radius: 10px;
+				font-size: 0;
+				background-position: center;
+				margin: 0.2rem;
+				background-color: white;
+				cursor: pointer;
+				z-index: 20;
+			}
+
+			.Navigation>ul {
+				display: none;
+			}
+
+			nav.Navigation>ul.navcontainer.visible,
+			nav>ul>li {
+				display: block;
+				z-index: 15;
+				border-bottom: 2px solid hsl(57, 95%, 82%);
+			}
+
+			nav>ul>li:first-of-type {
+				position: relative;
+				/* display: block; */
+				z-index: 15;
+				border-top: 2px solid hsl(57, 95%, 82%);
+			}
+
+			.logo {
+				font-size: 0.8rem;
+			}
+
+			nav>div {
+				display: flex;
+				flex-direction: row;
+				align-content: center;
+			}
+
+			.navcontainer li {
+				height: 48px;
+			}
+			#fs {
+				display: grid;
+				grid-template-areas:
+					"lv"
+					"vorname"
+					"ln"
+					"nachname"
+					"ls"
+					"strasse"
+					"lh"
+					"hausnummer"
+					"lp"
+					"postleitzahl"
+					"lstadt"
+					"stadt"
+					"lemail"
+					"emailadresse"
+					"btnsenden";
+				grid-template-columns: 20em;
+				grid-template-rows: repeat(15, 2em);
+				gap: 0.3em;
+			}
+		}
