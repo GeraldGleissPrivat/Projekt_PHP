@@ -1,6 +1,7 @@
 <?php
 require("../config.inc.php");
 require("../common.inc.php");
+require("../db.inc.php");
 
 ?>
 <!doctype html>
@@ -44,10 +45,8 @@ require("../common.inc.php");
 				asperiores
 				vel, tempora sequi dolorum tempore quia alias.</p>
 			<h2 class="col-xl-12 col-lg-12 col-md-12 col-sm-12">Einloggen oder unserem Verein beitreten:</h2>
-			<?php 	include ('login.php');
-			?>
 		</div>
-
-	</section>
+</section>
+	<?php 	include ('login2.php');?>
 </main>
 </html>

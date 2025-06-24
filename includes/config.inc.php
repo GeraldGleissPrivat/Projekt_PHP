@@ -5,7 +5,7 @@ define("DB",[
 	"hostadresse" => "localhost",
 	"username" => "root",
 	"passwort" => "",
-	"DBName" => "db_3614"
+	"DBName" => "db_projekt_php"
 ]);
 
 /* Errors:

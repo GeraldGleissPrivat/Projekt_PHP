@@ -36,4 +36,14 @@ function dbQuery(mysqli $conn_intern, string $sql_intern):mysqli_result|bool {
 function dbFetch(mysqli_result $antwort_intern):Object|null {
 	return $antwort_intern->fetch_object(); //fetch_array: gemischt-assoziatives Array | fetch_assoc: assoziatives Array
 }
+
+function pruefeAufLeer(string $in):string {
+	if(strlen($in)>0) {
+		$out = "'" . $in . "'";
+	}
+	else {
+		$out = "NULL";
+	}
+	return $out;
+}
 ?>

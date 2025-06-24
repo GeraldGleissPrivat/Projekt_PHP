@@ -147,7 +147,7 @@
 		.eingeblendet {
 			display: flex;
 			justify-content: center;
-			height: 80vh;
+			height: auto;
 			width: auto;
 			z-index: 5;
 			object-fit: contain;
@@ -387,10 +387,13 @@
 			grid-template-areas:
 			"luname Username"
 			"lpasswort Passwort"
-			" . btn";
+			" . btnlogin"
+			" . btnlogout";
 			grid-template-columns: 10em 15em;
-			grid-template-rows: 2em 2em 2em;
-			gap: 0.3em;	
+			grid-template-rows: 2em 2em 2em 2em;
+			gap: 0.3em;
+			justify-content:left;
+			border-left:4em;
 			align-items:center;
 		}
 		#login.Username{
@@ -406,7 +409,10 @@
 			grid-area: Passwort;
 		}
 		#login .btnlogin{
-			grid-area: btn;
+			grid-area: btnlogin;
+		}
+		#login .btnlogout{
+			grid-area: btnlogout;
 		}
 		#login.Username{
 			grid-area: luname;
