@@ -1,6 +1,6 @@
 <?php
 $msg="";
-$conn=dbconnect();
+$conn=dbConnect();
 
 if(count($_POST)>0){
 		$sql='SELECT * FROM tbl_user WHERE Emailadresse="'. $_POST["Emailadresse"] .'";';
@@ -13,19 +13,29 @@ if(count($_POST)>0){
 		ta(ini_get('session.save_path'));
 		session_start();
 		$_SESSION["eingeloggt"] = true;
+		
 		$IDUser=$ergebnis->IDUser;
 		ta($IDUser);
+		
+		$sql_login='UPDATE tbl_user SET Letzter_login="' . date("Y/m/d h:i:sa") . '" WHERE IDUser="'. $ergebnis->IDUser . '"';
+		ta($sql_login);
+		dbQuery($conn, $sql_login);
+		//ta($sql_login);
+		
 		//im VZ uploads/user wird ein Verzeichnis angelegt nach dem Muster "user_UserID"
 		$pfad='../../uploads/userdata/user_' . $IDUser;
- 		ta($pfad);
+ 		//ta($pfad);
 			if(!file_exists($pfad)){
 				mkdir($pfad,0755,true);
 			}
 			header("Location: ../../uploads/dateimanager.php");
 		}
 		else{
-			header("Location: login2.php");
+			header("Location: verein2.php");
 		}
+}
+else{
+	$msg="Kein Benutzer mit diesen Logindaten vorhanden";
 }
 
 echo('<form class="col-xl-6 col-lg-6 col-md-12 col-sm-12 Kontaktformular" method="post">
@@ -37,11 +47,9 @@ echo('<form class="col-xl-6 col-lg-6 col-md-12 col-sm-12 Kontaktformular" method
 							<label class="Passwort" for="Passwort">Passwort:</label>
 							<input id="passwort" type="password" name="Passwort" placeholder="Passwort" required>
 							<button class="btnlogin" type="submit">Login</button>
-							<button class="btnlogout" type="submit">Logout</button>
 						</div>
 				</fieldset>
+				<a href="../../registrieren2.php">Registrieren</a>
 	</form>');
-	
-	echo('<p>' . $msg . '</p>
-	</div>');
+echo('<p>' . $msg . '</p>');
 ?>

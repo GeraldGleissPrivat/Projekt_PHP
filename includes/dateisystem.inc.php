@@ -26,3 +26,4 @@ function loescheVerzeichnis(string $pfad):bool {
 	return $r;
 }
 ?>
+
