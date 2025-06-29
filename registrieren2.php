@@ -89,6 +89,7 @@ if(count($_POST)>0){
 		}
 		.lp{
 			grid-area:lp;
+			
 		}
 		.ip{
 			grid-area:ip;

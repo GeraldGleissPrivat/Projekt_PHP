@@ -3,28 +3,30 @@ $msg="";
 $conn=dbConnect();
 
 if(count($_POST)>0){
-		$sql='SELECT * FROM tbl_user WHERE Emailadresse="'. $_POST["Emailadresse"] .'";';
-		$ergebnisliste=dbquery($conn, $sql);
-		$ergebnis=dbFetch($ergebnisliste);
-		if(mysqli_num_rows($ergebnisliste)==1 && password_verify($_POST["Passwort"], $ergebnis->Passwort)){
+		//$sql='SELECT * FROM tbl_user WHERE Emailadresse="'. $_POST["Emailadresse"] .'";';
+		$sql=$conn->prepare('SELECT * FROM tbl_user WHERE (Emailadresse=?)');
+		$sql->bind_param("s",$mailadresse);
+		$mailadresse=$_POST["Emailadresse"];
+		$ergebnisliste=$sql->execute();
+		$ergebnisse=$sql->get_result();
+		$ergebnis=dbFetch($ergebnisse);
+		if($ergebnisse->num_rows==1 && password_verify($_POST["Passwort"], $ergebnis->Passwort)){
 			$msg="Login erfolgreich";
 		
-		ini_set('session.gc_maxlifetime',600);
+		//ini_set('session.gc_maxlifetime',600);
 		ta(ini_get('session.save_path'));
 		session_start();
 		$_SESSION["eingeloggt"] = true;
 		
+		//$sql_login='UPDATE tbl_user SET Letzter_login="' . date("Y/m/d h:i:sa") . '" WHERE IDUser="'. $ergebnis->IDUser . '"';
+		$sql_login=$conn->prepare('UPDATE tbl_user SET Letzter_login=? WHERE IDUser=?');
+		$sql_login->bind_param("si",$tstamp, $IDUser);
 		$IDUser=$ergebnis->IDUser;
-		ta($IDUser);
-		
-		$sql_login='UPDATE tbl_user SET Letzter_login="' . date("Y/m/d h:i:sa") . '" WHERE IDUser="'. $ergebnis->IDUser . '"';
-		ta($sql_login);
-		dbQuery($conn, $sql_login);
-		//ta($sql_login);
+		$tstamp=date("Y/m/d h:i:sa");
+		$ok=$sql_login->execute();
 		
 		//im VZ uploads/user wird ein Verzeichnis angelegt nach dem Muster "user_UserID"
 		$pfad='../../uploads/userdata/user_' . $IDUser;
- 		//ta($pfad);
 			if(!file_exists($pfad)){
 				mkdir($pfad,0755,true);
 			}
